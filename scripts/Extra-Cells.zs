@@ -57,8 +57,8 @@ val DataCircuit = <ore:circuitData>;
 val EliteCircuit = <ore:circuitElite>;
 val MasterCircuit = <ore:circuitMaster>;
 val UltimateCircuit = <ore:circuitUltimate>;
-val SuperconductorCircuits = <ore:circuitSuperconductor>;
-val InfinityCircuits = <ore:circuitInfinite>;
+val SuperconductorCircuit = <ore:circuitSuperconductor>;
+val InfiniteCircuit = <ore:circuitInfinite>;
 val EFlow = <gregtech:gt.metaitem.01:32706>;
 val DataOrb = <gregtech:gt.metaitem.01:32707>;
 
@@ -66,6 +66,7 @@ val QuartziteScrew = <ore:screwQuartzite>;
 val CertusScrew = <ore:screwCertusQuartz>;
 val NQuartzScrew = <ore:screwNetherQuartz>;
 val CertusPlate = <gregtech:gt.metaitem.01:17516>;
+val CCDust = <dreamcraft:item.ChargedCertusQuartzDust>;
 val AlPlate = <ore:plateAluminium>;
 val TitaniumPlate = <ore:plateTitanium>;
 val StainlessPlate = <ore:plateStainlessSteel>;
@@ -358,30 +359,6 @@ recipes.addShaped(Storage16384K, [
 
 recipes.addShapeless(<extracells:storage.physical:3>, [<extracells:storage.component:3>, <extracells:storage.casing:0>]);
 
-// --- Storage Cell Component - 256K
-recipes.addShaped(StorageComponent256K, [
-[DataCircuit, StorageComponent64K, DataCircuit],
-[StorageComponent64K, <dreamcraft:item.EngineeringProcessorItemEmeraldCore>, StorageComponent64K],
-[DataCircuit, StorageComponent64K, DataCircuit]]);
-
-// --- Storage Cell Component - 1024K
-recipes.addShaped(StorageComponent1024K, [
-[EliteCircuit, StorageComponent256K, EliteCircuit],
-[StorageComponent256K, <dreamcraft:item.EngineeringProcessorItemEmeraldCore>, StorageComponent256K],
-[EliteCircuit, StorageComponent256K, EliteCircuit]]);
-
-// --- Storage Cell Component - 4096K
-recipes.addShaped(StorageComponent4096K, [
-[MasterCircuit, StorageComponent1024K, MasterCircuit],
-[StorageComponent1024K, <dreamcraft:item.EngineeringProcessorItemAdvEmeraldCore>, StorageComponent1024K],
-[MasterCircuit, StorageComponent1024K, MasterCircuit]]);
-
-// --- Storage Cell Component - 16384K
-recipes.addShaped(StorageComponent16384K, [
-[SuperconductorCircuits, StorageComponent4096K, SuperconductorCircuits],
-[StorageComponent4096K, <dreamcraft:item.EngineeringProcessorItemAdvEmeraldCore>, StorageComponent4096K],
-[SuperconductorCircuits, StorageComponent4096K, SuperconductorCircuits]]);
-
 // --- Universal Advanced Storage Housing
 recipes.addShaped(UAdvStorageHousing, [
 [HHammer, CertusPlate, CertusScrew],
@@ -644,9 +621,21 @@ Assembler.addRecipe(<extracells:craftingstorage:2>, <appliedenergistics2:tile.Bl
 // --- Crafing Storage 16384K
 Assembler.addRecipe(<extracells:craftingstorage:3>, <appliedenergistics2:tile.BlockCraftingUnit>, <extracells:storage.component:3>, 400, 1920);
 
-// --- 64 K Crafting  Storage
-Assembler.addRecipe(<appliedenergistics2:tile.BlockCraftingStorage:3>, <appliedenergistics2:tile.BlockCraftingUnit>, <appliedenergistics2:item.ItemMultiMaterial:38>, 400, 480);
 
+// --- Storage Cell Component - 256K
+Assembler.addRecipe(StorageComponent256K, [StorageComponent64K * 4, <ore:circuitUltimate> * 16, <ore:plateIridium> * 16, <dreamcraft:item.EngineeringProcessorItemEmeraldCore>, <appliedenergistics2:item.ItemMultiMaterial:12> * 64, <gregtech:gt.integrated_circuit:9> * 0], null, 200, 122880);
+
+// --- Storage Cell Component - 256K Alt
+Assembler.addRecipe(StorageComponent256K, [<gregtech:gt.metaitem.01:32676> * 4, <ore:circuitUltimate> * 16, <ore:plateIridium> * 16, <dreamcraft:item.EngineeringProcessorItemEmeraldCore>, <appliedenergistics2:item.ItemMultiMaterial:12> * 64, <appliedenergistics2:item.ItemMultiMaterial:12> * 64, <appliedenergistics2:item.ItemMultiMaterial:12> * 64, <appliedenergistics2:item.ItemMultiMaterial:12> * 64, <gregtech:gt.integrated_circuit:10> * 0], <liquid:molten.americium> * 1440, 200, 122880);
+
+// --- Storage Cell Component - 1024K
+Assembler.addRecipe(StorageComponent1024K, [StorageComponent256K * 4, SuperconductorCircuit * 16, <ore:plateOsmium> * 16, <dreamcraft:item.EngineeringProcessorItemEmeraldCore> * 4, <appliedenergistics2:item.ItemMultiMaterial:12> * 64, <appliedenergistics2:item.ItemMultiMaterial:12> * 64, <gregtech:gt.integrated_circuit:9> * 0], null, 200, 491520);
+
+// --- Storage Cell Component - 4096K
+Assembler.addRecipe(StorageComponent4096K, [StorageComponent1024K * 4, InfiniteCircuit * 16, <ore:plateNeutronium> * 16, <dreamcraft:item.EngineeringProcessorItemAdvEmeraldCore>, <appliedenergistics2:item.ItemMultiMaterial:12> * 64, <appliedenergistics2:item.ItemMultiMaterial:12> * 64, <appliedenergistics2:item.ItemMultiMaterial:12> * 64, <gregtech:gt.integrated_circuit:9> * 0], null, 200, 1966080);
+
+// --- Storage Cell Component - 16384K
+Assembler.addRecipe(StorageComponent16384K, [StorageComponent4096K * 4, <ore:circuitBio> * 16, <ore:plateBedrockium> * 16, <dreamcraft:item.EngineeringProcessorItemAdvEmeraldCore> * 4, <appliedenergistics2:item.ItemMultiMaterial:12> * 64, <appliedenergistics2:item.ItemMultiMaterial:12> * 64, <appliedenergistics2:item.ItemMultiMaterial:12> * 64, <appliedenergistics2:item.ItemMultiMaterial:12> * 64, <gregtech:gt.integrated_circuit:9> * 0], null, 200, 7864320);
 
 
 

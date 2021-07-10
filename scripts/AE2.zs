@@ -119,6 +119,7 @@ val AlPlate = <ore:plateAluminium>;
 val TitaniumPlate = <ore:plateTitanium>;
 val RubberPlate = <ore:plateAnyRubber>;
 val CertusPlate = <gregtech:gt.metaitem.01:17516>;
+val CCDust = <dreamcraft:item.ChargedCertusQuartzDust>;
 val NQuartzPlate = <gregtech:gt.metaitem.01:17522>;
 val QuartzitePlate = <gregtech:gt.metaitem.01:17523>;
 val SiliconPlate = <gregtech:gt.metaitem.01:17020>;
@@ -1149,27 +1150,27 @@ recipes.addShaped(UStorageHousing, [
 
 // --- Storage Cell Component - 1K
 recipes.addShaped(StorageComponent1K, [
-[PrimitiveCircuit, <dreamcraft:item.ChargedCertusQuartzDust>, PrimitiveCircuit],
-[<dreamcraft:item.ChargedCertusQuartzDust>, <dreamcraft:item.LogicProcessorItemGoldCore>, <dreamcraft:item.ChargedCertusQuartzDust>],
-[PrimitiveCircuit, <dreamcraft:item.ChargedCertusQuartzDust>, PrimitiveCircuit]]);
+[PrimitiveCircuit, CCDust, PrimitiveCircuit],
+[CCDust, <dreamcraft:item.LogicProcessorItemGoldCore>, CCDust],
+[PrimitiveCircuit, CCDust, PrimitiveCircuit]]);
 
 // --- Storage Cell Component - 4K
 recipes.addShaped(StorageComponent4K, [
-[BasicCircuit, StorageComponent1K, BasicCircuit],
+[BasicCircuit, SteelPlate, BasicCircuit],
 [StorageComponent1K, <dreamcraft:item.LogicProcessorItemGoldCore>, StorageComponent1K],
-[BasicCircuit, StorageComponent1K, BasicCircuit]]);
+[BasicCircuit, SteelPlate, BasicCircuit]]);
 
 // --- Storage Cell Component - 16K
 recipes.addShaped(StorageComponent16K, [
-[GoodCircuit, StorageComponent4K, GoodCircuit],
+[GoodCircuit, AlPlate, GoodCircuit],
 [StorageComponent4K, <dreamcraft:item.EngineeringProcessorItemDiamondCore>, StorageComponent4K],
-[GoodCircuit, StorageComponent4K, GoodCircuit]]);
+[GoodCircuit, AlPlate, GoodCircuit]]);
 
 // --- Storage Cell Component - 64K
 recipes.addShaped(StorageComponent64K, [
-[AdvCircuit, StorageComponent16K, AdvCircuit],
+[AdvCircuit, <ore:plateStainlessSteel>, AdvCircuit],
 [StorageComponent16K, <dreamcraft:item.EngineeringProcessorItemDiamondCore>, StorageComponent16K],
-[AdvCircuit, StorageComponent16K, AdvCircuit]]);
+[AdvCircuit, <ore:plateStainlessSteel>, AdvCircuit]]);
 
 // --- 2 Spatial Component
 recipes.addShaped(<appliedenergistics2:item.ItemMultiMaterial:32>, [
